@@ -34,8 +34,7 @@ public class MapsLab {
 	 * Creates a map, with word lengths as keys and a Set of words that have that
 	 * length as values. E.g. the Integer 4 would map to the list:
 	 * {dogs,love,toad,goat,pets}, assuming those five words were the only unique
-	 * words with 4 letters included in the input. The keys of the returned Map
-	 * should be sorted according to the order added.
+	 * words with 4 letters included in the input. 
 	 * 
 	 * @param input
 	 *            the String of words whose lengths we want to consider
