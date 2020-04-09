@@ -1,5 +1,7 @@
 package edu.unl.raikes.mapslab;
 
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
@@ -13,6 +15,9 @@ public class MapsLab {
 	 */
 	public static void printAMap(Map<? extends Object, ? extends Object> map) {
 		// TODO: do the things (you may not use map's toString function)
+		for (Object key: map.keySet()) {
+			System.out.println(key + ": " + map.get(key));
+		}
 	}
 
 	/**
@@ -26,8 +31,20 @@ public class MapsLab {
 	public static Map<String, Integer> getWordFrequencies(String input) {
 		String[] words = input.split(" +");
 
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		int counter = 0;
+		for (int i = 0; i < words.length; i++) {
+			for (int j = 0; j < words.length; j++) {
+				if (words[i].equals(words[j])) {
+					counter++;
+				}
+			}
+			map.put(words[i], counter);
+			counter = 0;
+		}
+		
 		// TODO: do the things
-		return null;
+		return map;
 	}
 
 	/**
@@ -43,8 +60,22 @@ public class MapsLab {
 	public static Map<Integer, Set<String>> getWordsOfLengths(String input) {
 		String[] words = input.split(" +");
 
+		
+		Map<Integer, Set<String>> map = new HashMap<Integer, Set<String>>();
+		
+		for (int i = 0; i < words.length; i++) {
+			int wordLength = words[i].length();
+			Set<String> wordsOfLength = new HashSet<String>();
+			for (int j = 0; j < words.length; j++) {
+				if (words[j].length() == wordLength) {
+					wordsOfLength.add(words[j]);
+				}
+			}
+			map.put(wordLength, wordsOfLength);
+		}
+		
 		// TODO: do the things
-		return null;
+		return map;
 	}
 
 	/**
@@ -62,8 +93,21 @@ public class MapsLab {
 	public static Map<Character, Set<String>> getWordsThatIncludeChars(String input) {
 		String[] words = input.split(" +");
 
+		Character[] ABCs = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'};
+		Map<Character, Set<String>> map = new HashMap<Character, Set<String>>();
+		
+		for (int i = 0; i < ABCs.length; i++) {
+			Set<String> hasLetter = new HashSet<String>();
+			for (int j = 0; j < words.length; j++) {
+				if (words[j].indexOf(ABCs[i]) != -1) {
+					hasLetter.add(words[j]);
+				}
+			}
+			map.put(ABCs[i], hasLetter);
+		}
+		
 		// TODO: do the things
-		return null;
+		return map;
 	}
 
 	/**
